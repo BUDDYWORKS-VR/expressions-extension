@@ -17,14 +17,14 @@ MonoBehaviour:
     valueType: 2
     saved: 1
     defaultValue: 0
-    networkSynced: 1
+    networkSynced: 0
   - name: EE/MouthShape
     valueType: 1
     saved: 1
     defaultValue: 0
-    networkSynced: 1
+    networkSynced: 0
   - name: EE/EyeShape
     valueType: 1
     saved: 1
     defaultValue: 0
-    networkSynced: 1
+    networkSynced: 0

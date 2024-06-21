@@ -56,3 +56,14 @@ MonoBehaviour:
     subParameters:
     - name: EE/PupilShape
     labels: []
+  - name: <color=#FDDA0D><b>More</b></color>
+    icon: {fileID: 2800000, guid: 83a9a53e032bfaa4683356d1294a6433, type: 3}
+    type: 103
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 11400000, guid: eeb755ec9eef8694590fcf09fe3dc2b2, type: 2}
+    subParameters:
+    - name: 
+    labels: []

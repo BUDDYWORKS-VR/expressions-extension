@@ -33,3 +33,78 @@ MonoBehaviour:
     saved: 1
     defaultValue: 0.25
     networkSynced: 0
+  - name: EE/Favorite/Save_A
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/Save_B
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/Save_C
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/Load_A
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/Load_B
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/Load_C
+    valueType: 2
+    saved: 0
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/A_MouthShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/A_EyeShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/A_PupilShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0
+    networkSynced: 0
+  - name: EE/Favorite/B_MouthShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0.5
+    networkSynced: 0
+  - name: EE/Favorite/B_EyeShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0.5
+    networkSynced: 0
+  - name: EE/Favorite/B_PupilShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0.5
+    networkSynced: 0
+  - name: EE/Favorite/C_MouthShape
+    valueType: 1
+    saved: 1
+    defaultValue: 1
+    networkSynced: 0
+  - name: EE/Favorite/C_EyeShape
+    valueType: 1
+    saved: 1
+    defaultValue: 1
+    networkSynced: 0
+  - name: EE/Favorite/C_PupilShape
+    valueType: 1
+    saved: 1
+    defaultValue: 1
+    networkSynced: 0

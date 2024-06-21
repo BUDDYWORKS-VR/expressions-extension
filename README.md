@@ -4,7 +4,7 @@ Gimmick for expression selection.
 
 *Dependencies:*  
 - VRCFury  
-- Englisch MMD Blendshapes  
+- Englisch *OR* Japanese MMD Blendshapes  
 
 *Interface:*  
 To interface with Expressions Extension (for example to disable your blink logic while active), use "EE/Active" (BOOL). 

@@ -21,10 +21,15 @@ MonoBehaviour:
   - name: EE/MouthShape
     valueType: 1
     saved: 1
-    defaultValue: 0
+    defaultValue: 0.25
     networkSynced: 0
   - name: EE/EyeShape
     valueType: 1
     saved: 1
-    defaultValue: 0
+    defaultValue: 0.25
+    networkSynced: 0
+  - name: EE/PupilShape
+    valueType: 1
+    saved: 1
+    defaultValue: 0.25
     networkSynced: 0

@@ -45,3 +45,14 @@ MonoBehaviour:
     subParameters:
     - name: EE/EyeShape
     labels: []
+  - name: <color=#FDDA0D><b>Pupil Shape</b></color>
+    icon: {fileID: 2800000, guid: fc37bd282d8f17949844ddad30bb11d9, type: 3}
+    type: 203
+    parameter:
+      name: 
+    value: 1
+    style: 0
+    subMenu: {fileID: 0}
+    subParameters:
+    - name: EE/PupilShape
+    labels: []

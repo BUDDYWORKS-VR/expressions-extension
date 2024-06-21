@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Expressions Extension - Root Menu
   m_EditorClassIdentifier: 
   controls:
-  - name: <color=#FDDA0D><b>Expressions\nExtension
+  - name: <color=#FDDA0D><b><line-height=100%>Expressions Extension
     icon: {fileID: 2800000, guid: 94aee5e57b1b0294b94eda2db303e93a, type: 3}
     type: 103
     parameter:

@@ -20,7 +20,7 @@ namespace BUDDYWORKS.ExpressionsExtension
             "Packages/wtf.buddyworks.expressionsextension/Expressions Extension/Animations/Bank_Mouth"
         };
 
-        private string specialAnimationPath = "Packages/wtf.buddyworks.expressionsextension/Expressions Extension/Animations/Bank_Pupils.anim";
+        private string specialAnimationPath = "Packages/wtf.buddyworks.expressionsextension/Expressions Extension/Animations/Bank_Additive/Pupils.anim";
         private List<AnimationClip> animationClips = new List<AnimationClip>();
         private AnimationClip specialAnimationClip;
 

@@ -1,7 +1,7 @@
 {
   "name" : "wtf.buddyworks.expressionsextension",
   "displayName" : "BUDDYWORKS Expressions Extension",
-  "version" : "0.3.4",
+  "version" : "1.0.0",
   "unity" : "2022.3",
   "description" : "Expressions System for Photography.",
   "author": {

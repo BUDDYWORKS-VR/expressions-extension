@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
-namespace BUDDYWORKS.ExpressionsExtension
+namespace Buddyworks.ExpressionsExtension
 {
 
     public class AnimationReassign : EditorWindow
@@ -47,16 +45,14 @@ namespace BUDDYWORKS.ExpressionsExtension
                 {
                     string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                     AnimationClip clip = AssetDatabase.LoadAssetAtPath<AnimationClip>(assetPath);
-                    if (clip != null)
-                    {
-                        animationClips.Add(clip);
-                        selectedBlendShapes[clip] = 0;
-                    }
+                    if (!clip) continue;
+                    animationClips.Add(clip);
+                    selectedBlendShapes[clip] = 0;
                 }
             }
 
             specialAnimationClip = AssetDatabase.LoadAssetAtPath<AnimationClip>(specialAnimationPath);
-            if (specialAnimationClip != null)
+            if (specialAnimationClip)
             {
                 selectedBlendShapes[specialAnimationClip] = 0;
             }
@@ -67,56 +63,60 @@ namespace BUDDYWORKS.ExpressionsExtension
             GUILayout.Label("Mesh containing your face blendshapes", EditorStyles.boldLabel);
             skinnedMeshRenderer = (SkinnedMeshRenderer)EditorGUILayout.ObjectField(skinnedMeshRenderer, typeof(SkinnedMeshRenderer), true);
 
-            if (skinnedMeshRenderer != null)
+            if (!skinnedMeshRenderer) return;
+            if (blendShapeNames == null || blendShapeNames.Length != skinnedMeshRenderer.sharedMesh.blendShapeCount)
             {
-                if (blendShapeNames == null || blendShapeNames.Length != skinnedMeshRenderer.sharedMesh.blendShapeCount)
+                blendShapeNames = new string[skinnedMeshRenderer.sharedMesh.blendShapeCount];
+                for (int i = 0; i < blendShapeNames.Length; i++)
                 {
-                    blendShapeNames = new string[skinnedMeshRenderer.sharedMesh.blendShapeCount];
-                    for (int i = 0; i < blendShapeNames.Length; i++)
-                    {
-                        blendShapeNames[i] = skinnedMeshRenderer.sharedMesh.GetBlendShapeName(i);
-                    }
+                    blendShapeNames[i] = skinnedMeshRenderer.sharedMesh.GetBlendShapeName(i);
                 }
+            }
 
-                GUILayout.Label("WARNING: This will overwrite native animations!", EditorStyles.boldLabel);
-                GUILayout.Label("Reimport package to restore!", EditorStyles.boldLabel);
-                GUILayout.Label("---------------------------------", EditorStyles.boldLabel);
-                GUILayout.Label("Do not use blendshapes", EditorStyles.boldLabel);
-                GUILayout.Label("from your avatar descriptor like vrc.v_aa!", EditorStyles.boldLabel);
+            GUILayout.Space(12);
+            GUILayout.Label("WARNING: This will overwrite native animations!", EditorStyles.boldLabel);
+            GUILayout.Label("Reimport package to restore!", EditorStyles.boldLabel);
+            GUILayout.Label("---------------------------------", EditorStyles.boldLabel);
+            GUILayout.Label("Do not use blendshapes", EditorStyles.boldLabel);
+            GUILayout.Label("from your avatar descriptor like vrc.v_aa!", EditorStyles.boldLabel);
+            GUILayout.Space(12);
+            scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
-                scrollPosition = GUILayout.BeginScrollView(scrollPosition);
+            foreach (AnimationClip clip in animationClips)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(clip.name, GUILayout.Width(200));
+                selectedBlendShapes[clip] = EditorGUILayout.Popup(selectedBlendShapes[clip], blendShapeNames);
+                GUILayout.EndHorizontal();
+            }
 
-                foreach (var clip in animationClips)
-                {
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Label(clip.name, GUILayout.Width(200));
-                    selectedBlendShapes[clip] = EditorGUILayout.Popup(selectedBlendShapes[clip], blendShapeNames);
-                    GUILayout.EndHorizontal();
-                }
+            if (specialAnimationClip)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label(specialAnimationClip.name, GUILayout.Width(200));
+                selectedBlendShapes[specialAnimationClip] = EditorGUILayout.Popup(selectedBlendShapes[specialAnimationClip], blendShapeNames);
+                GUILayout.EndHorizontal();
+            }
 
-                if (specialAnimationClip != null)
-                {
-                    GUILayout.BeginHorizontal();
-                    GUILayout.Label(specialAnimationClip.name, GUILayout.Width(200));
-                    selectedBlendShapes[specialAnimationClip] = EditorGUILayout.Popup(selectedBlendShapes[specialAnimationClip], blendShapeNames);
-                    GUILayout.EndHorizontal();
-                }
+            GUILayout.EndScrollView();
 
-                GUILayout.EndScrollView();
-
-                if (GUILayout.Button("Generate"))
-                {
-                    GenerateExpressions();
-                }
+            if (GUILayout.Button("Generate"))
+            {
+                GenerateExpressions();
+            }
+            
+            GUILayout.Label("Expressions Extension - BUDDYWORKS", EditorStyles.boldLabel);
+            Rect labelRect = GUILayoutUtility.GetLastRect();
+            if (Event.current.type == EventType.MouseDown && labelRect.Contains(Event.current.mousePosition))
+            {
+                Application.OpenURL("https://github.com/BUDDYWORKS-VR/expressions-extension");
             }
         }
 
         private void GenerateExpressions()
         {
-            foreach (var entry in selectedBlendShapes)
+            foreach ((AnimationClip clip, int blendShapeIndex) in selectedBlendShapes)
             {
-                AnimationClip clip = entry.Key;
-                int blendShapeIndex = entry.Value;
                 string blendShapeName = blendShapeNames[blendShapeIndex];
 
                 RemoveAllProperties(clip);
@@ -134,10 +134,10 @@ namespace BUDDYWORKS.ExpressionsExtension
             Debug.Log("Expressions generated successfully.");
         }
 
-        private void RemoveAllProperties(AnimationClip clip)
+        private static void RemoveAllProperties(AnimationClip clip)
         {
             var bindings = AnimationUtility.GetCurveBindings(clip);
-            foreach (var binding in bindings)
+            foreach (EditorCurveBinding binding in bindings)
             {
                 AnimationUtility.SetEditorCurve(clip, binding, null);
             }

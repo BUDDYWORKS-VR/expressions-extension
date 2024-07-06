@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace BUDDYWORKS.ExpressionsExtension
+namespace Buddyworks.ExpressionsExtension
 {  
     public class PrefabSpawner : MonoBehaviour
     {
@@ -82,7 +82,7 @@ namespace BUDDYWORKS.ExpressionsExtension
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
             GameObject selectedObject = Selection.activeGameObject;
 
-            if (prefab == null)
+            if (!prefab)
             {
                 Debug.LogError("Failed to load prefab with GUID " + guid + " at path " + prefabPath);
                 return;
@@ -90,12 +90,12 @@ namespace BUDDYWORKS.ExpressionsExtension
 
             GameObject instantiatedPrefab = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
 
-            if (selectedObject != null)
+            if (selectedObject)
             {
                 instantiatedPrefab.transform.parent = selectedObject.transform;
             }
 
-            if (instantiatedPrefab != null)
+            if (instantiatedPrefab)
             {
                 EditorGUIUtility.PingObject(instantiatedPrefab);
             }

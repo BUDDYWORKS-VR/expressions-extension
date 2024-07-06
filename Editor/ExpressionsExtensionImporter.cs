@@ -56,7 +56,7 @@ namespace Buddyworks.ExpressionsExtension
         [MenuItem("GameObject/BUDDYWORKS/Expression Extension/Spawn Synced Prefab... [VRCFury]", true)]
         private static bool ValidateSpawnEE()
         {
-            return AssetDatabase.IsValidFolder(VRCF_Path) != false;
+            return AssetDatabase.IsValidFolder(VRCF_Path);
         }
 
         [MenuItem("BUDDYWORKS/Expression Extension/Spawn Unsynced Prefab... [ModularAvatar]", true)]
@@ -65,7 +65,7 @@ namespace Buddyworks.ExpressionsExtension
         [MenuItem("GameObject/BUDDYWORKS/Expression Extension/Spawn Synced Prefab... [ModularAvatar]", true)]
         private static bool ValidateSpawnEE_MA()
         {
-            return AssetDatabase.IsValidFolder(MA_Path) != false;
+            return AssetDatabase.IsValidFolder(MA_Path);
         }
 
         // Prefab Spawner

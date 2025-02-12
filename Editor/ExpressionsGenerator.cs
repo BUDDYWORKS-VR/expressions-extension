@@ -69,7 +69,7 @@ namespace Buddyworks.ExpressionsExtension
             {
                 blendShapeNames = Enumerable.Range(0, skinnedMeshRenderer.sharedMesh.blendShapeCount)
                     .Select(i => skinnedMeshRenderer.sharedMesh.GetBlendShapeName(i))
-                    .Where(name => !name.StartsWith("vrc.", StringComparison.OrdinalIgnoreCase))
+                    .Where(name => !name.StartsWith("vrc.", StringComparison.OrdinalIgnoreCase) && !name.StartsWith("vrc_", StringComparison.OrdinalIgnoreCase))
                     .ToArray();
             }
 

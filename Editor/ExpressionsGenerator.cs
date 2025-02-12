@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Buddyworks.ExpressionsExtension
 {
-
     public class AnimationReassign : EditorWindow
     {
         private SkinnedMeshRenderer skinnedMeshRenderer;
@@ -66,11 +67,10 @@ namespace Buddyworks.ExpressionsExtension
             if (!skinnedMeshRenderer) return;
             if (blendShapeNames == null || blendShapeNames.Length != skinnedMeshRenderer.sharedMesh.blendShapeCount)
             {
-                blendShapeNames = new string[skinnedMeshRenderer.sharedMesh.blendShapeCount];
-                for (int i = 0; i < blendShapeNames.Length; i++)
-                {
-                    blendShapeNames[i] = skinnedMeshRenderer.sharedMesh.GetBlendShapeName(i);
-                }
+                blendShapeNames = Enumerable.Range(0, skinnedMeshRenderer.sharedMesh.blendShapeCount)
+                    .Select(i => skinnedMeshRenderer.sharedMesh.GetBlendShapeName(i))
+                    .Where(name => !name.StartsWith("vrc.", StringComparison.OrdinalIgnoreCase))
+                    .ToArray();
             }
 
             GUILayout.Space(12);
@@ -78,7 +78,7 @@ namespace Buddyworks.ExpressionsExtension
             GUILayout.Label("Reimport package to restore!", EditorStyles.boldLabel);
             GUILayout.Label("---------------------------------", EditorStyles.boldLabel);
             GUILayout.Label("Do not use blendshapes", EditorStyles.boldLabel);
-            GUILayout.Label("from your avatar descriptor like vrc.v_aa!", EditorStyles.boldLabel);
+            GUILayout.Label("referenced in the descriptor!", EditorStyles.boldLabel);
             GUILayout.Space(12);
             scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 

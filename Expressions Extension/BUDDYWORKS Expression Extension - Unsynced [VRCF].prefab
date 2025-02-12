@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 3
   unityVersion: 2022.3.22f1
-  vrcfuryVersion: 1.961.0
+  vrcfuryVersion: 1.1172.0
   somethingIsBroken: 0
   config:
     features: []
@@ -65,7 +65,7 @@ MonoBehaviour:
             fileID: 0
             guid: 
             id: c5b3ba027f0379d4b8d4ae6db471f73c|Packages/wtf.buddyworks.expressionsextension/Expressions
-              Extension/Expressions Extension - FX.controller
+              Extension/Avatars 3.0/Expressions Extension - FX.controller
             objRef: {fileID: 9100000, guid: c5b3ba027f0379d4b8d4ae6db471f73c, type: 2}
           type: 5
         menus:
@@ -74,7 +74,7 @@ MonoBehaviour:
             fileID: 0
             guid: 
             id: 54ef4a2b1f837e745906610edd499d40|Packages/wtf.buddyworks.expressionsextension/Expressions
-              Extension/Expressions Extension - Root Menu.asset
+              Extension/Avatars 3.0/Expressions Extension - Root Menu.asset
             objRef: {fileID: 11400000, guid: 54ef4a2b1f837e745906610edd499d40, type: 2}
           prefix: 
         prms:
@@ -83,7 +83,7 @@ MonoBehaviour:
             fileID: 0
             guid: 
             id: 94ecd4a9f18d5bf41b98a00ded7b14bf|Packages/wtf.buddyworks.expressionsextension/Expressions
-              Extension/Expressions Extension - Parameters.asset
+              Extension/Avatars 3.0/Expressions Extension - Parameters Unsynced.asset
             objRef: {fileID: 11400000, guid: 94ecd4a9f18d5bf41b98a00ded7b14bf, type: 2}
         smoothedPrms: []
         globalParams:
@@ -93,8 +93,13 @@ MonoBehaviour:
         toggleParam: 
         rootObjOverride: {fileID: 0}
         rootBindingsApplyToAvatar: 0
-        rewriteBindings: []
+        rewriteBindings:
+        - from: With <3 by BUDDYWORKS
+          to: 
+          delete: 1
         allowMissingAssets: 0
+        injectSpsDepthParam: 
+        injectSpsVelocityParam: 
         controller:
           version: 1
           fileID: 0
